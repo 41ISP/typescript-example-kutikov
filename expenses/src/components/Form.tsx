@@ -1,4 +1,4 @@
-type TCategory = 
+export type TCategory = "food" | "transport" | "fun" | ""
 
 export const Form = () => {
     return (
@@ -15,9 +15,3 @@ export const Form = () => {
         </div>
     )
 }
-
-// type TExample = number
-
-// const a = (arg1: TExample) {
-
-// }
