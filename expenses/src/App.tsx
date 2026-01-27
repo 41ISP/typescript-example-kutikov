@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Form, type TCategory } from './components/Form'
+import { ExpenseCard } from './components/ExpenseCard'
 
 interface IExpense {
   id: number,
@@ -37,7 +38,7 @@ function App() {
       <Form />
       <div className="total">Total: $42.50</div>
       {/* Expense List */}
-      
+      {expenses.map((el) => <ExpenseCard />)}
     </div>
 
   )
