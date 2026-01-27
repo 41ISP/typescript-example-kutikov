@@ -1,3 +1,5 @@
+type TCategory = 
+
 export const Form = () => {
     return (
         <div className="form">
@@ -13,3 +15,9 @@ export const Form = () => {
         </div>
     )
 }
+
+// type TExample = number
+
+// const a = (arg1: TExample) {
+
+// }

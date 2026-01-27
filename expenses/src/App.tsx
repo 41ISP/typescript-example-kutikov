@@ -2,6 +2,28 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Form } from './components/Form'
+
+interface IExpense {
+  id: number,
+  name: string,
+
+  amount: number
+}
+const initialExpenses = [
+  {
+    id: Date.now(),
+    name: "KFC",
+    category: "food",
+    amount: 15
+  },
+  {
+    id: Date.now() + 1,
+    name: "Netflix",
+    category: "fun",
+    amount: 19.99
+  }
+]
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,17 +33,7 @@ function App() {
       <h1>Expense Tracker</h1>
       {/* Input Form */}
       {/* Form и ExpenseCard */}
-      <div className="form">
-        <input type="text" placeholder="Expense title" />
-        <input type="number" placeholder="Amount" />
-        <select>
-          <option value="">Select category</option>
-          <option>Food</option>
-          <option>Transport</option>
-          <option>Fun</option>
-        </select>
-        <button>Add Expense</button>
-      </div>
+      <Form />
       <div className="total">Total: $42.50</div>
       {/* Expense List */}
       <div className="expense">
