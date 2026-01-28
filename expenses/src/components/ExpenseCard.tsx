@@ -1,8 +1,8 @@
-export const ExpenseCard = () => {
+export const ExpenseCard = ({name, id, category, amount}) => {
     return (
         <div className="expense">
             <div>
-                Lunch
+                {name}
                 <div className="category">Food</div>
             </div>
             <div className="amount">$12.50</div>
