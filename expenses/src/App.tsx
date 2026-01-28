@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Form, type TCategory } from './components/Form'
+import { Form, type IFormData, type TCategory } from './components/Form'
 import { ExpenseCard } from './components/ExpenseCard'
 
-interface IExpense {
+export interface IExpense {
   id: number,
   name: string,
   category: TCategory,
@@ -27,23 +27,38 @@ const initialExpenses: IExpense[] = [
   }
 ]
 
-function App() {
+export function App() {
   const [expenses, setExpenses] = useState<IExpense[]>(initialExpenses)
-  
+  const [total, setTotal] = useState(0)
+  const [formData, setFormData] = useState<IFormData>({
+    name: "",
+    amount: 0,
+    category: ""
+  })
+  useEffect(() => {
+    setTotal(expenses.reduce(
+      (acc, el) => acc + el.amount,
+      0
+    ))
+  },
+    [expenses])
   return (
     <div className="app">
       <h1>Expense Tracker</h1>
       {/* Input Form */}
       {/* Form и ExpenseCard */}
-      <Form />
-      <div className="total">Total: $42.50</div>
+      <Form
+        formData={formData}
+        setFormData={setFormData}
+      />
+      <div className="total">Total: ${Math.round(total)}</div>
       {/* Expense List */}
-      {expenses.map((el) => <ExpenseCard />)}
+      {expenses.map((el) => <ExpenseCard {...el} />)}
     </div>
 
   )
 }
 
-export default App
+// export default App
 
 
