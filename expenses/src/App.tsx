@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ChangeEvent } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -42,6 +42,12 @@ export function App() {
     ))
   },
     [expenses])
+  const handleFormChange = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target
+    setFormData((old) => ({ ...old, [name]: value }))
+  }
   return (
     <div className="app">
       <h1>Expense Tracker</h1>

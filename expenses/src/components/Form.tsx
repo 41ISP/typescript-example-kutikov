@@ -15,7 +15,7 @@ export const Form = (
 ) => {
     return (
         <div className="form">
-            <input value={formData.name} type="text" placeholder="Expense title" name="name" />
+            <input onChange={(e) =>} value={formData.name} type="text" placeholder="Expense title" name="name" />
             <input type="number" placeholder="Amount" name="amount" />
             <select name="category" >
                 <option value="">Select category</option>
