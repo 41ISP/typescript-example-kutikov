@@ -1,0 +1,16 @@
+.card {
+    background-color: grey;
+    margin: 10px;
+}
+
+.card h2.title {
+    color: blue
+}
+
+
+
+
+
+h3 {
+    color: red !important;
+}
