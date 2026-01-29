@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent } from 'react'
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -35,19 +35,24 @@ export function App() {
     amount: 0,
     category: ""
   })
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const newExpense = {
+      ...formData,
+      id: Date.now()
+    }
+    setExpenses((old) => [...old, newExpense])
+  }
+
   useEffect(() => {
+    console.log(expenses)
     setTotal(expenses.reduce(
-      (acc, el) => acc + el.amount,
+      (acc, el) => +acc + +el.amount,
       0
     ))
   },
     [expenses])
-  const handleFormChange = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, value } = e.target
-    setFormData((old) => ({ ...old, [name]: value }))
-  }
+
   return (
     <div className="app">
       <h1>Expense Tracker</h1>
@@ -56,6 +61,7 @@ export function App() {
       <Form
         formData={formData}
         setFormData={setFormData}
+        handleSubmit={handleSubmit}
       />
       <div className="total">Total: ${Math.round(total)}</div>
       {/* Expense List */}
