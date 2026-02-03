@@ -26,6 +26,12 @@ const categoriesButtons = [
     ]
 ]
 
+export const initialFormData = {
+    name: "",
+    amount: 0,
+    category: ""
+} as IFormData
+
 export const Form = (
     { formData, setFormData, handleSubmit }: IFormProps
 ) => {
@@ -36,8 +42,8 @@ export const Form = (
         setFormData((old) => ({ ...old, [name]: value }))
     }
 
-    useEffect(() => {console.log(formData)},
-    [formData])
+    useEffect(() => { console.log(formData) },
+        [formData])
 
     return (
         <form onSubmit={handleSubmit} className="form">
